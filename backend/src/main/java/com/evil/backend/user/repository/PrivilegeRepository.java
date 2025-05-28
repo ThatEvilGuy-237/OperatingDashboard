@@ -9,4 +9,6 @@ import java.util.Optional;
 
 public interface PrivilegeRepository extends CrudRepository<Privilege, Long> {
     Optional<Privilege> findByType(PrivilegeType type);
+
+    Optional<Privilege> findByDisplayName(String displayName);
 }

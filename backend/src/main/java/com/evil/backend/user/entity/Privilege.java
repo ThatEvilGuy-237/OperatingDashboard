@@ -14,12 +14,12 @@ public class Privilege {
     @GeneratedValue
     private Long id;
 
+    @Column(nullable = false)
+    private String displayName;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, unique = true)
     private PrivilegeType type;
-
-    @Column(nullable = false)
-    private String displayName;
 
     @Column(nullable = false)
     private String description;
