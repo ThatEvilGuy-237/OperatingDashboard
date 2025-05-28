@@ -1,4 +1,4 @@
-package com.evil.backend.User;
+package com.evil.backend.user.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

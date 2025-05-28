@@ -4,9 +4,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.evil.backend.User.Account;
-import com.evil.backend.User.Privilege;
-import com.evil.backend.User.Role;
+import com.evil.backend.user.entity.Account;
+import com.evil.backend.user.entity.Privilege;
+import com.evil.backend.user.entity.Role;
 
 import java.util.Collection;
 import java.util.HashSet;

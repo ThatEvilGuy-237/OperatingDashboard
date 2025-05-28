@@ -1,4 +1,4 @@
-package com.evil.backend.User;
+package com.evil.backend.user.entity;
 
 public enum PrivilegeType {
     MANAGE_SERVER,
