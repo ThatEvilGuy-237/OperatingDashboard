@@ -31,7 +31,7 @@ public class DatabaseSeeder implements CommandLineRunner {
         if (accountRepository.count() == 0) {
             // Create privileges
             Privilege readPrivilege = new Privilege(null, "READ_ACCESS", PrivilegeType.MANAGE_SERVER, "Allows read access to resources");
-            Privilege writePrivilege = new Privilege(null, "WRITE_ACCESS", PrivilegeType.KICK_USERS, "Allows write access to resources");
+            Privilege writePrivilege = new Privilege(null, "KICK_USERS", PrivilegeType.KICK_USERS, "Allows write access to resources");
 
             privilegeRepository.saveAll(List.of(readPrivilege, writePrivilege));
 
