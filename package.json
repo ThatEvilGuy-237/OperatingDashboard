@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@vue/tsconfig": "^0.7.0"
+  }
+}
