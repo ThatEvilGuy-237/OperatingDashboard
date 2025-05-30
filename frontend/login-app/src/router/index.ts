@@ -7,6 +7,11 @@ const routes = [
     name: 'Login',
     component: LoginPage,
   },
+  // {
+  //   path: '/somthing else',
+  //   name: 'Somthing',
+  //   component: LoginPage,
+  // },
   // Optionally, redirect root to login
   { path: '/', redirect: '/login' },
 ];
