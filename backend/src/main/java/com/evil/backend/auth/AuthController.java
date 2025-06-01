@@ -1,24 +1,28 @@
 package com.evil.backend.auth;
 
-import com.evil.backend.core.security.JwtUtil;
-import com.evil.backend.user.entity.Account;
-import com.evil.backend.user.repository.AccountRepository;
+import java.util.Map;
+import java.util.Optional;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
-import java.util.Optional;
+import com.evil.backend.core.security.JwtUtil;
+import com.evil.backend.user.entity.Account;
+import com.evil.backend.user.repository.AccountRepository;
 
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
-    private JwtUtil jwtUtil;
+    private final JwtUtil jwtUtil;
     private final AccountRepository accountRepository;
 
     public AuthController(AuthenticationManager authenticationManager, JwtUtil jwtUtil, AccountRepository accountRepository) {
