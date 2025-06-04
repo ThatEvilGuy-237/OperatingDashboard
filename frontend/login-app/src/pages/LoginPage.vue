@@ -18,6 +18,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import AuthService from '../services/AuthService';
 
 const identifier = ref('');
 const password = ref('');
@@ -25,12 +26,8 @@ const errorMessage = ref('');
 
 const handleLogin = () => {
   if (identifier.value && password.value) {
-    // Simulate a login request
-    if (identifier.value === 'admin' && password.value === 'admin') {
-      alert('Login successful!');
-    } else {
-      errorMessage.value = 'Invalid email/username or password';
-    }
+    
+   AuthService.login(identifier.value, password.value)
   }
 };
 </script>
