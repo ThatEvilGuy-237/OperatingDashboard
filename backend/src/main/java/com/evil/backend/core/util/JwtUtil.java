@@ -1,4 +1,4 @@
-package com.evil.backend.core.security;
+package com.evil.backend.core.util;
 
 import java.security.Key;
 import java.util.Date;
@@ -24,6 +24,12 @@ public class JwtUtil {
     @Value("${jwt.expiration}")
     private long jwtExpirationMs;
 
+    @Value("${jwt.issuer}")
+    private String jwtIssuer;
+
+    @Value("${jwt.audience}")
+    private String jwtAudience;
+
     public String generateToken(Account account) {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + jwtExpirationMs);
@@ -43,8 +49,8 @@ public class JwtUtil {
 
         return Jwts.builder()
                 .setSubject(account.getUsername())
-                .setIssuer("your-backend-service")
-                .setAudience("your-frontend-app")
+                .setIssuer(jwtIssuer)
+                .setAudience(jwtAudience)
                 .claim("roles", roles)
                 .claim("privileges", privileges)
                 .setIssuedAt(now)

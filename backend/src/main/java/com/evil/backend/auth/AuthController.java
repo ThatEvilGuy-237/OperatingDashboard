@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.evil.backend.core.security.JwtUtil;
+import com.evil.backend.core.util.JwtUtil;
 import com.evil.backend.user.entity.Account;
 import com.evil.backend.user.repository.AccountRepository;
 

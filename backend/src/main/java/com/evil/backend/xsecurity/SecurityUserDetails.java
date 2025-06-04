@@ -1,4 +1,4 @@
-package com.evil.backend.security;
+package com.evil.backend.xsecurity;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -9,10 +9,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.evil.backend.user.entity.Account;
 
-public class CustomUserDetails implements UserDetails {
+public class SecurityUserDetails implements UserDetails {
     private final Account account;
 
-    public CustomUserDetails(Account account) {
+    public SecurityUserDetails(Account account) {
         this.account = account;
     }
 
