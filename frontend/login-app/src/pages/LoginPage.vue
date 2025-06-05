@@ -26,8 +26,8 @@ const errorMessage = ref('');
 
 const handleLogin = () => {
   if (identifier.value && password.value) {
-    
-   AuthService.login(identifier.value, password.value)
+    console.log(identifier.value, password.value);
+   AuthService.login(identifier.value.trim(), password.value.trim());
   }
 };
 </script>

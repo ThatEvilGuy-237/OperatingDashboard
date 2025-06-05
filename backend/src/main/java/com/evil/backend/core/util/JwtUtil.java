@@ -1,19 +1,16 @@
 package com.evil.backend.core.util;
 
+import com.evil.backend.user.entity.Account;
+import com.evil.backend.user.entity.Role;
+import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
 import java.security.Key;
 import java.util.Date;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
-import com.evil.backend.user.entity.Account;
-import com.evil.backend.user.entity.Role;
-
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.security.Keys;
-
 
 @Component
 public class JwtUtil {
@@ -57,6 +54,25 @@ public class JwtUtil {
                 .setExpiration(expiryDate)
                 .signWith(key)
                 .compact();
-
     }
+
+    public boolean validateToken(String token) {
+        try {
+            Key key = Keys.hmacShaKeyFor(jwtSecret.getBytes());
+            Jwts.parserBuilder()
+                    .setSigningKey(key)
+                    .requireIssuer(jwtIssuer)
+                    .requireAudience(jwtAudience)
+                    .build()
+                    .parseClaimsJws(token);
+
+            return true;
+
+        } catch (JwtException | IllegalArgumentException ex) {
+            // Invalid token
+            return false;
+        }
+    }
+
+    
 }
