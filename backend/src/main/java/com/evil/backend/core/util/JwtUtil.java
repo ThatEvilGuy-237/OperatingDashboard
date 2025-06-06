@@ -1,16 +1,19 @@
 package com.evil.backend.core.util;
 
-import com.evil.backend.user.entity.Account;
-import com.evil.backend.user.entity.Role;
-import io.jsonwebtoken.JwtException;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.security.Keys;
 import java.security.Key;
 import java.util.Date;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import com.evil.backend.user.entity.Account;
+import com.evil.backend.user.entity.Role;
+
+import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JwtUtil {
@@ -74,5 +77,13 @@ public class JwtUtil {
         }
     }
 
-    
+    public String getUsernameFromToken(String token) {
+        Key key = Keys.hmacShaKeyFor(jwtSecret.getBytes());
+        return Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
+    }
 }

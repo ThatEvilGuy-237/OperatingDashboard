@@ -1,6 +1,7 @@
 package com.evil.backend.auth;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,13 +26,9 @@ public class AuthController {
             return ResponseEntity.status(401).body("Invalid credentials");
         }
     }
-    @PostMapping("/validate")
-    public ResponseEntity<?> validateToken(@RequestBody JwtDTO jwtDTO) {
-        try {
-            boolean isValid = authService.validateToken();
-            return ResponseEntity.ok(isValid);
-        } catch (Exception ex) {
-            return ResponseEntity.status(401).body("Invalid token");
-        }
+    // check if its a valid token in general
+    @GetMapping("/validate")
+    public ResponseEntity<?> validateToken() {
+        return ResponseEntity.ok(true);
     }
 }

@@ -1,14 +1,15 @@
 package com.evil.backend.auth;
 
-import com.evil.backend.core.util.JwtUtil;
-import com.evil.backend.user.entity.Account;
-import com.evil.backend.user.repository.AccountRepository;
 import java.util.Optional;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+
+import com.evil.backend.core.util.JwtUtil;
+import com.evil.backend.user.entity.Account;
+import com.evil.backend.user.repository.AccountRepository;
 
 @Service
 public class AuthService {
@@ -41,21 +42,5 @@ public class AuthService {
         );
         String token = jwtUtil.generateToken(account);
         return new JwtDTO(token);
-    }
-
-    public boolean validateToken() {
-        // validate the token
-        boolean isValid = jwtUtil.validateToken(SecurityContextHolder.getContext().getAuthentication().getCredentials().toString());
-        // Check if the user exists in the database
-        String username = SecurityContextHolder
-                            .getContext().getAuthentication().getName();
-
-        Account account = accountRepository.findByUsername(username).orElse(null);
-        if (account == null) {
-            isValid = false;
-        }
-
-
-         return isValid;
     }
 }
