@@ -4,9 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predev": "copy ..\\shared-assets\\.env.development .env.development",
+    "prebuild": "copy ..\\shared-assets\\.env.production .env.production",
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "build": "vite build"
   },
   "dependencies": {
     "dashboard-app": "file:",

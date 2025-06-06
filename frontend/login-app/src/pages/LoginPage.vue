@@ -24,10 +24,18 @@ const identifier = ref('');
 const password = ref('');
 const errorMessage = ref('');
 
-const handleLogin = () => {
+const handleLogin = async () => {
   if (identifier.value && password.value) {
     console.log(identifier.value, password.value);
-   AuthService.login(identifier.value.trim(), password.value.trim());
+    const success: boolean = await AuthService.login(identifier.value.trim(), password.value.trim());
+    console.log('Login success:', success);
+    if(success) {
+      // Redirect to the home page or dashboard
+      window.location.href = '/';
+    } else {
+      errorMessage.value = 'Invalid email/username or password.';
+    }
+
   }
 };
 </script>

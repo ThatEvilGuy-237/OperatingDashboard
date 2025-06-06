@@ -3,7 +3,7 @@ import axios, { type AxiosInstance } from 'axios';
 
 class EvilApiService {
   protected static apiClient: AxiosInstance = axios.create({
-    baseURL: 'http://localhost:8080/api',
+    baseURL: import.meta.env.VITE_API_URL, // Use env variable here
     timeout: 5000,
     headers: {
       'Content-Type': 'application/json',
