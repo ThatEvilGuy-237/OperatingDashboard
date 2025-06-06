@@ -1,0 +1,10 @@
+{
+  "name": "operating-dashboard-frontend",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix login-app\" \"npm run dev --prefix dashboard-app\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
