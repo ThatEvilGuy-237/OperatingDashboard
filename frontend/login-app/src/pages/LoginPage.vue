@@ -31,7 +31,7 @@ const handleLogin = async () => {
     console.log('Login success:', success);
     if(success) {
       // Redirect to the home page or dashboard
-      window.location.href = '/';
+    window.location.href = '/';
     } else {
       errorMessage.value = 'Invalid email/username or password.';
     }
