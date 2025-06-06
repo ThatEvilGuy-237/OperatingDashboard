@@ -12,8 +12,8 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.evil.backend.user.entity.PrivilegeType;
 
@@ -32,10 +32,10 @@ public class RoleSecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(withDefaults()) // <-- Add this line
-                .headers(headers -> headers.frameOptions().disable()) // Allow H2 console in frames
+                .headers(headers -> headers.disable()) // Allow H2 console in frames
                 .authorizeHttpRequests(auth -> auth
                     .requestMatchers("/h2-console/**").permitAll() // Always allow H2 console
-                    .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll() // Allow login without authentication
+                    .requestMatchers( "/api/auth/login").permitAll() // Allow login without authentication
                     .requestMatchers(HttpMethod.GET, "/api/users")
                         .hasAuthority(PrivilegeType.READ_ACCESS.name())
                     .requestMatchers(HttpMethod.DELETE, "/api/users/**")
