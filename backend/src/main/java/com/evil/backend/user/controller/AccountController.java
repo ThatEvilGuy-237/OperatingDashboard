@@ -2,11 +2,13 @@ package com.evil.backend.user.controller;
 
 import com.evil.backend.user.entity.Account;
 import com.evil.backend.user.service.AccountService;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 @RestController
 @RequestMapping("api/accounts")
@@ -23,8 +25,12 @@ public class AccountController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Account>> getAllUsers() {
-        List<Account> users = accountService.getAllUsers();
-        return ResponseEntity.ok(users);
+    public ResponseEntity<Page<Account>> getAllUsers(
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "100") int size) {
+
+        Page<Account> usersPage = accountService.getAllUsers(page, size);
+        
+        return ResponseEntity.ok(usersPage);
     }
 }

@@ -1,7 +1,11 @@
 package com.evil.backend.user.service;
 import java.util.List;
+import java.util.Observable;
 import java.util.Optional;
 
+import  org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.evil.backend.user.entity.Account;
@@ -19,7 +23,8 @@ public class AccountService {
         return accountRepository.findById(id);
     }
 
-    public List<Account> getAllUsers() {
-        return (List<Account>) accountRepository.findAll();
+    public Page<Account> getAllUsers(int page, int size) {
+        Pageable pageable = PageRequest.of(page,size); 
+        return accountRepository.findAll(pageable);
     }
 }
