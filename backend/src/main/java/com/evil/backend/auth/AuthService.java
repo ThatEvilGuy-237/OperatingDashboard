@@ -24,7 +24,7 @@ public class AuthService {
         this.accountRepository = accountRepository;
     }
 
-    public JwtDTO authenticateAndGenerateToken(LoginDTO loginDTO) throws AuthenticationException {
+    public JwtDTO authenticateAndGenerateToken(AuthDTO loginDTO) throws AuthenticationException {
         String identifier = loginDTO.getIdentifier();
         String password = loginDTO.getPassword();
 
