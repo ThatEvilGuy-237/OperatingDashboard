@@ -3,6 +3,8 @@ package com.evil.backend.xsecurity;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,10 +20,17 @@ public class SecurityUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return account.getRoles().stream()
+        Logger logger = LoggerFactory.getLogger(SecurityUserDetails.class);
+
+        var authorities = account.getRoles().stream()
             .flatMap(role -> role.getPrivileges().stream())
             .map(priv -> new SimpleGrantedAuthority(priv.getType().name()))
             .collect(Collectors.toSet());
+
+        logger.info("User '{}' has authorities: {}", account.getUsername(), 
+            authorities.stream().map(GrantedAuthority::getAuthority).toList());
+
+        return authorities;
     }
 
     @Override

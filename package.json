@@ -1,0 +1,10 @@
+{
+  "name": "operating-dashboard-root",
+  "private": true,
+  "scripts": {
+    "dev": "node run-all.js"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

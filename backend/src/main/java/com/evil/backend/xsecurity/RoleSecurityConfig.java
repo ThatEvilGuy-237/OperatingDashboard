@@ -40,15 +40,12 @@ public class RoleSecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                     .requestMatchers("/h2-console/**").permitAll() // Always allow H2 console
                     .requestMatchers( "/api/auth/login").permitAll()
+                    
                     .requestMatchers(HttpMethod.GET, "/api/auth/validate").authenticated()
-                    .requestMatchers(HttpMethod.GET, "/api/users")
-                        .hasAuthority(PrivilegeType.READ_ACCESS.name())
-                    .requestMatchers(HttpMethod.DELETE, "/api/users/**")
-                        .hasAuthority(PrivilegeType.KICK_USERS.name())
-                    .requestMatchers(HttpMethod.GET, "/api/server/status")
-                        .hasAuthority(PrivilegeType.READ_ACCESS.name())
-                    .requestMatchers(HttpMethod.PUT, "/api/server/settings")
-                        .hasAuthority(PrivilegeType.MANAGE_SERVER.name())
+
+                    .requestMatchers(HttpMethod.GET, "/api/accounts","/api/accounts/**")
+                    .hasAuthority(PrivilegeType.READ_ACCESS.name())
+
                     .requestMatchers("/api/**").authenticated()
                     .anyRequest().denyAll()
                 )

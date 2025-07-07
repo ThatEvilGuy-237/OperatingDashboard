@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import DashboardView from '../pages/DashboardView.vue';
 import AboutView from '../pages/AboutView.vue';
+import AccountPage from '../pages/accounts/AccountsPage.vue'
 import AuthService from '../services/AuthService';
 
 const LOGIN_URL = import.meta.env.VITE_LOGIN_URL;
@@ -16,6 +17,11 @@ const routes = [
     name: 'About',
     component: AboutView
   },
+  {
+    path: '/accounts',
+    name: 'Accounts',
+    component: AccountPage
+  },
   { 
     path: '/',
     redirect: '/dashboard'
@@ -27,6 +33,7 @@ const router = createRouter({
   routes
 });
 
+// VALIDATE TOKEN
 // check if the user is authenticated or not
 router.beforeEach(async (to, from, next) => {
   const isValid = await AuthService.validateToken();

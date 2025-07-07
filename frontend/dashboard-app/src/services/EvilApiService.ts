@@ -1,4 +1,5 @@
 import axios, { type AxiosInstance } from 'axios';
+import CookieService from './CookieService';
 
 
 class EvilApiService {
@@ -9,6 +10,14 @@ class EvilApiService {
       'Content-Type': 'application/json',
     },
   });
+
+    static getHeader() {
+    const token = CookieService.getCookie('token');
+    return {
+      Authorization: token ? `Bearer ${token}` : '',
+    };
+  }
+
 }
 
 export default EvilApiService;

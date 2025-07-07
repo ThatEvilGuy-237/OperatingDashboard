@@ -1,4 +1,4 @@
-import EvilApiService from "./EvilService";
+import EvilApiService from "./EvilApiService";
 import CookieService from "./CookieService";
 
 class AuthService extends EvilApiService {

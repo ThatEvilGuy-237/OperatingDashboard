@@ -2,7 +2,8 @@
   <div id="app">
     <nav>
       <router-link to="/dashboard">Dashboard</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/about">About</router-link> |
+      <router-link to="/accounts">Accounts</router-link>
     </nav>
     <div class="dashboard-example">
       <router-view />
