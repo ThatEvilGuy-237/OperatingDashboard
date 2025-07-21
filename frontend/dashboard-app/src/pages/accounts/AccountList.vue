@@ -1,12 +1,30 @@
+<script setup lang="ts">
+import type { AccountDto } from '../../interfaces/Account';
+import AccountItem from './AccountItem.vue';
+
+const headers = [
+  "ID",
+  "Username",
+  "Email",
+  "First Name",
+  "Last Name",
+  "Phone Number",
+  "Validated",
+  "Locked",
+  "Job Title",
+  "Roles",
+  "Account Created",
+  "Last Login"
+];
+
+defineProps<{ accounts: AccountDto[] }>();
+</script>
+
 <template>
   <table>
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Username</th>
-        <th>Email</th>
-        <th>First Name</th>
-        <th>Last Name</th>
+        <th v-for="header in headers" :key="header">{{ header }}</th>
       </tr>
     </thead>
     <tbody>
@@ -14,13 +32,3 @@
     </tbody>
   </table>
 </template>
-
-<script setup lang="ts">
-import { defineProps } from 'vue';
-import AccountItem from './AccountItem.vue';
-import type { AccountDto } from "../../services/AccountService";
-
-defineProps<{
-  accounts: AccountDto[];
-}>();
-</script>

@@ -12,8 +12,9 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import {AccountService, type AccountDto } from "../../services/AccountService";
+import {AccountService } from "../../services/AccountService";
 import AccountList from './AccountList.vue';
+import type { AccountDto } from '../../interfaces/Account';
 
 const accounts = ref<AccountDto[]>([]);
 const currentPage = ref(0);

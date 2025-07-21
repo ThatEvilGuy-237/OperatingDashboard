@@ -4,12 +4,11 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 import com.evil.backend.user.entity.Account;
+import com.evil.backend.user.entity.JobTitle;
 import com.evil.backend.user.entity.Role;
 
 import lombok.Builder;
-import lombok.Data;
 
-@Data
 @Builder
 public record AccountDto(
     Long id,
@@ -21,6 +20,7 @@ public record AccountDto(
     Set<Role> roles,
     boolean validated,
     boolean locked,
+    JobTitle jobTitle,
     LocalDateTime accountCreated,
     LocalDateTime lastLogin
 ) {
@@ -35,6 +35,7 @@ public record AccountDto(
             .roles(account.getRoles())
             .validated(account.isValidated())
             .locked(account.isLocked())
+            .jobTitle(account.getJobTitle()) // added
             .accountCreated(account.getAccountCreated())
             .lastLogin(account.getLastLogin())
             .build();
@@ -51,6 +52,7 @@ public record AccountDto(
         account.setRoles(roles);
         account.setValidated(validated);
         account.setLocked(locked);
+        account.setJobTitle(jobTitle); // added
         account.setAccountCreated(accountCreated);
         account.setLastLogin(lastLogin);
         return account;

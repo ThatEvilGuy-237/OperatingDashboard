@@ -8,10 +8,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.evil.backend.user.entity.Account;
+import com.evil.backend.user.entity.JobTitle;
 import com.evil.backend.user.entity.Privilege;
 import com.evil.backend.user.entity.PrivilegeType;
 import com.evil.backend.user.entity.Role;
 import com.evil.backend.user.repository.AccountRepository;
+import com.evil.backend.user.repository.JobTitleRepository;
 import com.evil.backend.user.repository.PrivilegeRepository;
 import com.evil.backend.user.repository.RoleRepository;
 
@@ -24,6 +26,7 @@ public class DatabaseSeeder implements CommandLineRunner {
     private final PrivilegeRepository privilegeRepository;
     private final RoleRepository roleRepository;
     private final AccountRepository accountRepository;
+    private final JobTitleRepository jobTitleRepository;
 
     @Override
     public void run(String... args) {
@@ -40,12 +43,17 @@ public class DatabaseSeeder implements CommandLineRunner {
         Privilege writePrivilege = new Privilege(null, "Can Edit Data", PrivilegeType.WRITE_ACCESS, "Allows modifying resources");
         privilegeRepository.saveAll(List.of(readPrivilege, writePrivilege));
 
-        // Create roles with privileges
+        // Create roles
         Role adminRole = new Role(null, "ADMIN", "#FF0000", Set.of(readPrivilege, writePrivilege));
         Role userRole = new Role(null, "USER", "#00FF00", Set.of(readPrivilege));
         roleRepository.saveAll(List.of(adminRole, userRole));
 
-        // Create accounts with roles using builder
+        // Create job titles
+        JobTitle adminJob = new JobTitle(null, "Administrator", "🧠");
+        JobTitle userJob = new JobTitle(null, "Basic User", "👤");
+        jobTitleRepository.saveAll(List.of(adminJob, userJob));
+
+        // Create accounts
         Account admin = Account.builder()
                 .username("admin")
                 .email("admin@example.com")
@@ -56,6 +64,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                 .roles(Set.of(adminRole, userRole))
                 .validated(false)
                 .locked(false)
+                .jobTitle(adminJob)
                 .accountCreated(LocalDateTime.now())
                 .lastLogin(null)
                 .build();
@@ -70,6 +79,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                 .roles(Set.of(userRole))
                 .validated(false)
                 .locked(false)
+                .jobTitle(userJob)
                 .accountCreated(LocalDateTime.now())
                 .lastLogin(null)
                 .build();

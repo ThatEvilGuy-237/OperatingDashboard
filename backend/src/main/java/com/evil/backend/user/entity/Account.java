@@ -49,12 +49,11 @@ public class Account {
         joinColumns = @JoinColumn(name = "account_id"),
         inverseJoinColumns = @JoinColumn(name = "role_id")
     )
+    private Set<Role> roles;
     private boolean validated;
     private boolean locked;
-    private Set<Role> roles;
 
     // handy information
-    @Column(length = 100)
     @ManyToOne
     private JobTitle jobTitle;
     private LocalDateTime accountCreated;
