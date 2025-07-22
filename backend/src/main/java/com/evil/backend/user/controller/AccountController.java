@@ -2,6 +2,7 @@ package com.evil.backend.user.controller;
 
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,9 @@ import com.evil.backend.user.dto.AccountDto;
 import com.evil.backend.user.service.AccountService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 @RequestMapping("api/accounts")
@@ -22,9 +26,9 @@ public class AccountController {
 
     @GetMapping("/{id}")
     public ResponseEntity<AccountDto> getUserById(@PathVariable Long id) {
-        return accountService.getUserById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        AccountDto account = accountService.getUserById(id);
+
+        return ResponseEntity.ok(account);
     }
 
     @GetMapping
@@ -35,4 +39,17 @@ public class AccountController {
         Page<AccountDto> usersPage = accountService.getAllUsers(page, size);
         return ResponseEntity.ok(usersPage);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<AccountDto> updateUser(@PathVariable Long id, @RequestBody AccountDto accountDto) {
+        AccountDto updatedAccount = accountService.updateUser(id, accountDto);
+        return ResponseEntity.ok(updatedAccount);
+    }
+    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<AccountDto> deleteUser(@PathVariable Long id) {
+        AccountDto deletedAccount = accountService.deleteUser(id);
+        return ResponseEntity.ok(deletedAccount);
+    }
+    
 }

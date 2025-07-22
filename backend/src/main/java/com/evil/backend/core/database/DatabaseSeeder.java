@@ -44,8 +44,8 @@ public class DatabaseSeeder implements CommandLineRunner {
         privilegeRepository.saveAll(List.of(readPrivilege, writePrivilege));
 
         // Create roles
-        Role adminRole = new Role(null, "ADMIN", "#FF0000", Set.of(readPrivilege, writePrivilege));
-        Role userRole = new Role(null, "USER", "#00FF00", Set.of(readPrivilege));
+        Role adminRole = new Role(null, "ADMIN", "#FF0000", Set.of(readPrivilege, writePrivilege),100);
+        Role userRole = new Role(null, "USER", "#00FF00", Set.of(readPrivilege), 200);
         roleRepository.saveAll(List.of(adminRole, userRole));
 
         // Create job titles
