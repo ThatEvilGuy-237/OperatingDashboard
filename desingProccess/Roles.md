@@ -3,8 +3,8 @@
 - So User can have diffrent roles and each role can have diffrent Premissions.
 
 # Roles
-- **Owner**: BIGBOSS
-- **Suport**: Full access to all sections of the dashboard.
+- **Owner**: BIGBOSS/Company Owner
+- **Suport**: Full access to all sections of the dashboard when requested from the owner.
 - **Admin**: Full access to all sections of the dashboard.
 - **OTHER ROLES CREATED BY OWNER,SUPORT,ADMIN**: can have diffrent rights
 - **User**: Can log in but has no access to anthing but can see home page.
