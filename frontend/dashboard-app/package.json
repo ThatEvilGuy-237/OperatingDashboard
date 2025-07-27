@@ -10,11 +10,12 @@
     "build": "vite build"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.2.0",
     "axios": "^1.9.0",
     "cookie": "^1.0.2",
     "dashboard-app": "file:",
     "js-cookie": "^3.0.5",
-    "vue": "^3.5.13",
+    "vue": "^3.5.17",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
