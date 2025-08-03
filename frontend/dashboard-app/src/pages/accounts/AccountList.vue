@@ -4,7 +4,7 @@ import AccountItem from './AccountItem.vue';
 
 const headers = [
   "ID",
-  "Username",
+  "Username", 
   "Email",
   "First Name",
   "Last Name",
@@ -14,7 +14,8 @@ const headers = [
   "Job Title",
   "Roles",
   "Account Created",
-  "Last Login"
+  "Last Login",
+  ""
 ];
 
 defineProps<{ accounts: AccountDto[] }>();

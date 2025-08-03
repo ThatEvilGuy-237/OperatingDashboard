@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import DashboardView from '../pages/DashboardView.vue';
 import AboutView from '../pages/AboutView.vue';
-import AccountPage from '../pages/accounts/AccountsPage.vue'
+import AccountPage from '../pages/AccountsPage.vue'
 import AuthService from '../services/AuthService';
 
 const LOGIN_URL = import.meta.env.VITE_LOGIN_URL;

@@ -21,11 +21,14 @@
     </td>
     <td>{{ formatDate(account.accountCreated) }}</td>
     <td>{{ formatDate(account.lastLogin) }}</td>
+
+    <td><DeleteActionButton /></td>
   </tr>
 </template>
 
 <script setup lang="ts">
 import type { AccountDto } from "../../interfaces/Account";
+import DeleteActionButton from "../../components/Buttons/DeleteActionButton.vue";
 
 defineProps<{
   account: AccountDto;
