@@ -1,6 +1,6 @@
 <template>
   <EvilActionButton
-    :disabled="isDeleting"
+    :disabled="processing"
     backgroundColor="#ef4444"
     frontColor="#ffffff"
     hoverBackgroundColor="#b91c1c"
@@ -16,15 +16,15 @@ import EvilActionButton from './EvilActionButton.vue'
 import { TrashIcon } from '@heroicons/vue/24/solid'
 import { ref } from 'vue'
 
-const isDeleting = ref(false)
+const processing = ref(false)
 
 function handleDelete() {
-  if (isDeleting.value) return
-  isDeleting.value = true
+  if (processing.value) return
+  processing.value = true
 
   // delete logic here
   setTimeout(() => {
-    isDeleting.value = false
+    processing.value = false
   }, 2000)
 }
 </script>

@@ -1,0 +1,21 @@
+:root{
+    --russet: #813615;
+    --atomic-tangerine: #f59f6aff;
+    --paynes-gray: #475b63ff;
+    --myrtle-green: #508085ff;
+    --platinum: #dae2dfff;
+}
+:root {
+  --russet: #813615;
+  --atomic-tangerine: #f59f6aff;
+  --paynes-gray: #475b63ff;
+  --myrtle-green: #508085ff;
+  --platinum: #dae2dfff;
+
+  /* Between Colors (approximate blends) */
+  --russet-tangerine: #ba6b3f;        /* Between russet and atomic tangerine */
+  --tangerine-platinum: #f1bfa4;      /* Between atomic tangerine and platinum */
+  --platinum-myrtle: #a6bab2;         /* Between platinum and myrtle green */
+  --myrtle-paynes: #4b6e74;           /* Between myrtle green and payne's gray */
+  --russet-paynes: #64491f;           /* Between russet and payne's gray */
+}

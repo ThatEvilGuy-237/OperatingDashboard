@@ -18,7 +18,7 @@
 
 
 <script setup lang="ts">
-import { defineProps, defineEmits, type Component } from 'vue'
+import { defineProps, defineEmits, type Component, type PropType } from 'vue'
 
 const props = defineProps({
     disabled: { type: Boolean, default: false },
@@ -26,7 +26,7 @@ const props = defineProps({
     frontColor: { type: String, default: 'white' },
     hoverBackgroundColor: { type: String, default: '#2563eb' },
     hoverFrontColor: { type: String, default: 'white' },
-    icon: { type: Object as () => Component | null, default: null },
+    icon: { type: [Object, Function] as PropType<Component | null>, default: null },
     text: { type: String, default: '' },
     tooltip: { type: String, default: '' },
 })

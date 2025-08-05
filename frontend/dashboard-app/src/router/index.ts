@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import DashboardView from '../pages/DashboardView.vue';
 import AboutView from '../pages/AboutView.vue';
-import AccountPage from '../pages/AccountsPage.vue'
+import AccountsPage from '../pages/accounts/AccountsPage.vue';
+import AccountDetailPage from '../pages/accounts/AccountDetailPage.vue';
 import AuthService from '../services/AuthService';
 
 const LOGIN_URL = import.meta.env.VITE_LOGIN_URL;
@@ -20,7 +21,12 @@ const routes = [
   {
     path: '/accounts',
     name: 'Accounts',
-    component: AccountPage
+    component: AccountsPage
+  },
+  {
+    path: '/accounts/:id',
+    name: 'account-detail',
+    component: AccountDetailPage
   },
   { 
     path: '/',

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { AccountDto } from '../../interfaces/Account';
+import type { AccountDto } from '../../../interfaces/Account';
 import AccountItem from './AccountItem.vue';
 
 const headers = [
@@ -31,5 +31,20 @@ defineProps<{ accounts: AccountDto[] }>();
     <tbody>
       <AccountItem v-for="account in accounts" :key="account.id" :account="account" />
     </tbody>
-  </table>
+  </table>  
 </template>
+
+<style scoped>
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #595959;
+  background-color: var();
+  color: #333;
+  font-size: 14px;
+}
+tr{
+  
+}
+
+</style>

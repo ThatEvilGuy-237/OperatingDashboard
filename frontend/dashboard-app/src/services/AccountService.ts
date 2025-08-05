@@ -10,9 +10,6 @@ import EvilApiService from "./EvilApiService";
 //   firstName: string;
 //   lastName: string;
 // }
-
-
-
 class AccountService extends EvilApiService {
   static async getAccounts(page = 0, size = 1): Promise<PagedResult<AccountDto>> {
 
@@ -20,13 +17,11 @@ class AccountService extends EvilApiService {
       params: { page, size },
       headers: this.getHeader()
     });
-    console.log(response.data);
     return response.data;
   }
 
   static async getAccountById(id: number): Promise<AccountDto> {
-    const response = await this.apiClient.get<AccountDto>(`/accounts/${id}`,
-      {
+    const response = await this.apiClient.get<AccountDto>(`/accounts/${id}`,{
       headers: this.getHeader()
       }
     );
