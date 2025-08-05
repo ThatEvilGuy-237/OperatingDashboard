@@ -39,7 +39,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   border: 1px solid #595959;
-  background-color: var();
+  background-color: var(--wite);
   color: #333;
   font-size: 14px;
 }

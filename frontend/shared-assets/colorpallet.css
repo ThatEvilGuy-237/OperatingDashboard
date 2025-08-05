@@ -1,21 +1,50 @@
-:root{
+:root {
     --russet: #813615;
     --atomic-tangerine: #f59f6aff;
     --paynes-gray: #475b63ff;
     --myrtle-green: #508085ff;
     --platinum: #dae2dfff;
 }
-:root {
-  --russet: #813615;
-  --atomic-tangerine: #f59f6aff;
-  --paynes-gray: #475b63ff;
-  --myrtle-green: #508085ff;
-  --platinum: #dae2dfff;
 
-  /* Between Colors (approximate blends) */
-  --russet-tangerine: #ba6b3f;        /* Between russet and atomic tangerine */
-  --tangerine-platinum: #f1bfa4;      /* Between atomic tangerine and platinum */
-  --platinum-myrtle: #a6bab2;         /* Between platinum and myrtle green */
-  --myrtle-paynes: #4b6e74;           /* Between myrtle green and payne's gray */
-  --russet-paynes: #64491f;           /* Between russet and payne's gray */
+:root {
+    /* Russet (dark brown) */
+    --russet: #813615; /* original */
+    --russet-1: #994826; /* slightly lighter */
+    --russet-2: #b25a37; /* medium */
+    --russet-3: #cb6c48; /* lighter */
+    --russet-4: #e47e59; /* lightest */
+
+    /* Atomic Tangerine (orange-ish) */
+    --atomic: #f59f6a; /* base */
+    --atomic-1: #f7aa79; /* lighter */
+    --atomic-2: #f9b589; /* more light */
+    --atomic-3: #fbc099; /* softer */
+    --atomic-4: #fddaaa; /* lightest */
+
+    /* Paynes Gray (dark blue-gray) */
+    --paynes: #475b63; /* base */
+    --paynes-1: #5c6d74; /* lighter */
+    --paynes-2: #708086; /* medium */
+    --paynes-3: #879599; /* softer */
+    --paynes-4: #a1afb2; /* lightest */
+
+    /* Myrtle Green (blue-green tone) */
+    --myrtle: #508085; /* base */
+    --myrtle-1: #679395; /* lighter */
+    --myrtlen-2: #7da5a6; /* more light */
+    --myrtle-3: #96b7b7; /* softer */
+    --myrtle-4: #b1cbcb; /* lightest */
+
+    /* Platinum (background white-gray) */
+    --platinum: #dae2df; /* base */
+    --platinum-1: #e0e7e5; /* lighter */
+    --platinum-2: #e6eceb; /* more light */
+    --platinum-3: #edf1f0; /* softer */
+    --platinum-4: #f5f7f7; /* lightest */
+
+    /* Wite (white) */
+    --white: #ffffff;
+
+    /* Black (black) */
+    --black: #000000;
 }
