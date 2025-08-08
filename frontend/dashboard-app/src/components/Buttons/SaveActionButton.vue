@@ -1,11 +1,11 @@
 <template>
   <EvilActionButton
     :disabled="processing"
-    backgroundColor="#ef4444"
+    backgroundColor="#22c55e"
     frontColor="#ffffff"
-    hoverBackgroundColor="#b91c1c"
+    hoverBackgroundColor="#15803d"
     hoverFrontColor="#ffffff"
-    :icon="TrashIcon"
+    :icon="CheckIcon"
     :text="text"
     @click="handleClick"
   />
@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import EvilActionButton from './EvilActionButton.vue'
-import { TrashIcon } from '@heroicons/vue/24/solid'
+import { CheckIcon } from '@heroicons/vue/24/solid'
 import { ref } from 'vue'
 
 const processing = ref(false)

@@ -23,6 +23,10 @@
     <div>{{ Utils.formatDate(account.accountCreated) }}</div>
     <div>{{ Utils.formatDate(account.lastLogin) }}</div>
 </div>
+<div class="buttons">
+  <DeleteActionButton @click="handleDelete" />
+  <SaveActionButton @click="handelUpdate" />
+</div>
 </template>
 
 <script setup lang="ts">
@@ -31,12 +35,13 @@ import { useRoute } from 'vue-router'
 import type { AccountDto } from '../../interfaces/Account';
 import { AccountService } from '../../services/AccountService';
 import Utils from '../../utils/Utils';
+import DeleteActionButton from '../../components/Buttons/DeleteActionButton.vue';
 const route = useRoute();
 let id:number = -1;
 import { ref } from 'vue';
+import SaveActionButton from '../../components/Buttons/SaveActionButton.vue';
 
 const account = ref<AccountDto | null>(null);
-
 
 function getIdFromUrl(paramiters:any) :number{
     return Number(paramiters.id);
@@ -50,6 +55,12 @@ onMounted(() => {
     getAccount();
 })
 
+function handleDelete(){
+  AccountService.deleteAccount(id);
+}
+function handelUpdate(){
+  AccountService.updateAccount(account.value!);
+}
 </script>
 
 <style scoped> 

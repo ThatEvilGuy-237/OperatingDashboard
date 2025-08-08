@@ -1,7 +1,27 @@
+<template>
+  <div>
+    <input type="text" placeholder="Search(not working)..."> 
+    <button>Search</button>
+  </div>
+  
+  <!-- Table -->
+  <table>
+    <thead>
+      <tr>
+        <th v-for="header in headers" :key="header">{{ header }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <AccountItem v-for="account in accounts" :key="account.id" :account="account" />
+    </tbody>
+  </table>  
+</template>
+
 <script setup lang="ts">
 import type { AccountDto } from '../../../interfaces/Account';
 import AccountItem from './AccountItem.vue';
 
+// change this for dirent langue handeling
 const headers = [
   "ID",
   "Username", 
@@ -21,19 +41,6 @@ const headers = [
 defineProps<{ accounts: AccountDto[] }>();
 </script>
 
-<template>
-  <table>
-    <thead>
-      <tr>
-        <th v-for="header in headers" :key="header">{{ header }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <AccountItem v-for="account in accounts" :key="account.id" :account="account" />
-    </tbody>
-  </table>  
-</template>
-
 <style scoped>
 table {
   width: 100%;
@@ -42,9 +49,6 @@ table {
   background-color: var(--wite);
   color: #333;
   font-size: 14px;
-}
-tr{
-  
 }
 
 </style>

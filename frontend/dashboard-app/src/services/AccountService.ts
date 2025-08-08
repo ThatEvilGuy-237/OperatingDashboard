@@ -27,6 +27,16 @@ class AccountService extends EvilApiService {
     );
     return response.data;
   }
+  static async updateAccount(account: AccountDto): Promise<AccountDto> {
+    return await this.apiClient.put(`/accounts/${account.id}`, account, {
+      headers: this.getHeader()
+    });
+  }
+  static async deleteAccount(id: number): Promise<AccountDto> {
+    return await this.apiClient.delete(`/accounts/${id}`, {
+      headers: this.getHeader()
+    });
+  }
 }
 
 export { AccountService };
